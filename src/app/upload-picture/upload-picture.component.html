@@ -1,1 +1,9 @@
-<p>upload-picture works!</p>
+<label>
+  Enter an URL:
+  <input type="url"
+         name="url"
+         id="url"
+         placeholder="example.com/1.jpg"
+         #urlPicture>
+  <button (click)="add(urlPicture.value)">add</button>
+</label>

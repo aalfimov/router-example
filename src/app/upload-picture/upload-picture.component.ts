@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {PicturesService} from '../pictures.service';
 
 @Component({
   selector: 'app-upload-picture',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UploadPictureComponent implements OnInit {
 
-  constructor() { }
+  constructor(private picturesService: PicturesService) {
+  }
 
   ngOnInit() {
   }
 
+  add(value: string) {
+    this.picturesService.add(value);
+  }
 }

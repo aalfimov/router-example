@@ -5,7 +5,8 @@ import {UploadPictureComponent} from './upload-picture/upload-picture.component'
 
 const routes: Routes = [
   {path: 'pictures', component: PicturesDisplayComponent},
-  {path: 'upload', component: UploadPictureComponent}
+  {path: 'upload', component: UploadPictureComponent},
+  {path: '', redirectTo: '/pictures', pathMatch: 'full'}
 ];
 
 @NgModule({

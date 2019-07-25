@@ -1,27 +1,35 @@
 .myButton {
-  -moz-box-shadow:inset -1px -1px 4px 0px #276873;
-  -webkit-box-shadow:inset -1px -1px 4px 0px #276873;
-  box-shadow:inset -1px -1px 4px 0px #276873;
-  background-color:#599bb3;
-  -moz-border-radius:10px;
-  -webkit-border-radius:10px;
-  border-radius:10px;
-  border:1px solid #29668f;
-  display:inline-block;
-  cursor:pointer;
-  color:#ffffff;
-  font-size:19px;
-  font-weight:bold;
-  padding:8px 14px;
-  text-decoration:none;
-  text-shadow:0 1px 0 #3d768a;
+  font-family: Verdana, sans-serif;
+  -moz-box-shadow: inset -1px -1px 4px 0px #276873;
+  -webkit-box-shadow: inset -1px -1px 4px 0px #276873;
+  box-shadow: inset -1px -1px 4px 0px #276873;
+  background-color: #599bb3;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  border: 1px solid #29668f;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 19px;
+  font-weight: bold;
+  padding: 8px 14px;
+  text-decoration: none;
+  text-shadow: 0 1px 0 #3d768a;
+
   :active {
-    position:relative;
-    top:1px;
+    position: relative;
+    top: 1px;
   }
+
   :hover {
-    background-color:#408c99;
+    background-color: #408c99;
   }
 }
+
+button {
+  margin: 5px;
+}
+
 
 

@@ -1,4 +1,6 @@
 <div *ngFor="let picture of this.picturesService.picturesArray">
-  <img src="{{picture}}" alt="picture">
+  <div (click)="changeStyle(picture)">
+    <img src="{{picture}}" alt="picture" class="thumbnail">
+  </div>
 </div>
 
