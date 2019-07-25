@@ -3,10 +3,10 @@ import {PicturesService} from '../pictures.service';
 
 @Component({
   selector: 'app-photo-display',
-  templateUrl: './pictures-display.component.html',
-  styleUrls: ['./pictures-display.component.scss']
+  templateUrl: './pictures-gallery.component.html',
+  styleUrls: ['./pictures-gallery.component.scss']
 })
-export class PicturesDisplayComponent implements OnInit {
+export class PicturesGalleryComponent implements OnInit {
 
   constructor(private picturesService: PicturesService) {
   }

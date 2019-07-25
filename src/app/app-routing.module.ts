@@ -1,12 +1,14 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
-import {PicturesDisplayComponent} from './photo-display/pictures-display.component';
+import {PicturesGalleryComponent} from './pictures-gallery/pictures-gallery.component';
 import {UploadPictureComponent} from './upload-picture/upload-picture.component';
+import {LightBoxComponent} from './light-box/light-box.component';
 
 const routes: Routes = [
-  {path: 'pictures', component: PicturesDisplayComponent},
+  {path: 'gallery', component: PicturesGalleryComponent},
+  { path: 'image/:url', component: LightBoxComponent },
   {path: 'upload', component: UploadPictureComponent},
-  {path: '', redirectTo: '/pictures', pathMatch: 'full'}
+  {path: '', redirectTo: '/gallery', pathMatch: 'full'}
 ];
 
 @NgModule({
