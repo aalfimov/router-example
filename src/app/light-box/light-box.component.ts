@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PicturesService} from '../pictures.service';
 import {ActivatedRoute} from '@angular/router';
 
@@ -12,10 +12,10 @@ export class LightBoxComponent implements OnInit {
   image: string;
 
   constructor(private picturesService: PicturesService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute) {
+  }
 
- // ngOnInit() {}
-  ngOnInit(){
-    this.image = this.route.snapshot.params['url'];
+  ngOnInit() {
+    this.image = this.route.snapshot.params.url;
   }
 }

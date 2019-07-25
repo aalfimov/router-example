@@ -1,9 +1,8 @@
-<div *ngFor="let picture of this.picturesService.picturesArray">
-<!--  <div (click)="changeStyle(picture)">-->
-<!--    <img src="{{picture}}" alt="picture" class="thumbnail">-->
-<!--  </div>-->
-  <a [routerLink] ="['/image', picture]">
-    <img src="{{picture}}" class="tn" width="200" height="160">
-  </a>
+<div *ngFor="let picture of this.picturesService.picturesArray" class="img-container">
+  <img [routerLink]="['/image', picture]"
+       src="{{picture}}"
+       width="400"
+       height="250"
+       alt="picture">
 </div>
 

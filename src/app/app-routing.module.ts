@@ -6,7 +6,7 @@ import {LightBoxComponent} from './light-box/light-box.component';
 
 const routes: Routes = [
   {path: 'gallery', component: PicturesGalleryComponent},
-  { path: 'image/:url', component: LightBoxComponent },
+  {path: 'image/:url', component: LightBoxComponent},
   {path: 'upload', component: UploadPictureComponent},
   {path: '', redirectTo: '/gallery', pathMatch: 'full'}
 ];
