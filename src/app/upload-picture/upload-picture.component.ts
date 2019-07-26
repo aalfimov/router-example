@@ -15,6 +15,8 @@ export class UploadPictureComponent implements OnInit {
   }
 
   add(value: string) {
-    this.picturesService.add(value);
+    if (value) {
+      this.picturesService.add(value);
+    }
   }
 }

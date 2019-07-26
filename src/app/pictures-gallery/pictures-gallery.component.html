@@ -1,8 +1,6 @@
 <div *ngFor="let picture of this.picturesService.picturesArray" class="img-container">
   <img [routerLink]="['/image', picture]"
        src="{{picture}}"
-       width="400"
-       height="250"
        alt="picture">
 </div>
 

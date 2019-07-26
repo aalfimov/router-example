@@ -1,9 +1,13 @@
-.img-container {
-  // margin: 24px;
+.img-item{
   // box-shadow: #555 1px 2px 8px 1px;
-  min-height: 900px;
-  max-width: 90%;
+  min-width: 100vw;
+  min-height: 45vw;
   background-position: center;
   background-repeat: no-repeat;
-  align-content: center;
+}
+div:active, div:focus {
+  outline: none;
+}
+div::-moz-focus-inner {
+  border: 0;
 }

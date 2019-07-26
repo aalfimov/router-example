@@ -1,4 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+}
 .myButton {
   -moz-box-shadow: inset 0 1px 0 0 #ffffff;
   -webkit-box-shadow: inset 0 1px 0 0 #ffffff;
@@ -39,4 +46,10 @@
     position: relative;
     top: 1px;
   }
+}
+button:active, button:focus {
+  outline: none;
+}
+button::-moz-focus-inner {
+  border: 0;
 }
