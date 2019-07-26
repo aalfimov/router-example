@@ -13,9 +13,12 @@ export class PicturesGalleryComponent implements OnInit {
 
   ngOnInit() {
   }
+  // example https://github.com/themyth92/angular2-lightbox/tree/master/src
+  // https://github.com/crystalui/angular-lightbox/blob/master/src/app/app.component.ts
+  // https://www.youtube.com/watch?v=6j5q-hP8sfk&t=369s
 
-  changeStyle(picture) {
-    // console.log('picture was clicked' + picture);
-    return `<img src="{{picture}}" alt="picture" class="lightbox">`;
-  }
+  // changeStyle(picture) {
+  //   // console.log('picture was clicked' + picture);
+  //   return `<img src="{{picture}}" alt="picture" class="lightbox">`;
+  // }
 }
