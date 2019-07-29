@@ -5,14 +5,15 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {PicturesGalleryComponent} from './pictures-gallery/pictures-gallery.component';
 import {UploadPictureComponent} from './upload-picture/upload-picture.component';
-import {LightBoxComponent} from './light-box/light-box.component';
+import {KeyboardListenerDirective, LightBoxComponent} from './light-box/light-box.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PicturesGalleryComponent,
     UploadPictureComponent,
-    LightBoxComponent
+    LightBoxComponent,
+    KeyboardListenerDirective
   ],
   imports: [
     BrowserModule,

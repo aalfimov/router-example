@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {PicturesService} from '../pictures.service';
 
 @Component({
@@ -6,24 +6,16 @@ import {PicturesService} from '../pictures.service';
   templateUrl: './pictures-gallery.component.html',
   styleUrls: ['./pictures-gallery.component.scss']
 })
-export class PicturesGalleryComponent implements OnInit {
+export class PicturesGalleryComponent {
   lightBox = false;
-  selectPicture: any;
+  selectPicture: string;
+  index: number;
 
   constructor(private picturesService: PicturesService) {
   }
 
-  ngOnInit() {
-  }
-  // example https://github.com/themyth92/angular2-lightbox/tree/master/src
-  // https://github.com/crystalui/angular-lightbox/blob/master/src/app/app.component.ts
-  // https://www.youtube.com/watch?v=6j5q-hP8sfk&t=369s
-
-  // changeStyle(picture) {
-  //   // console.log('picture was clicked' + picture);
-  //   return `<img src="{{picture}}" alt="picture" class="lightbox">`;
-  // }
-  showLightBox(picture) {
+  showLightBox(picture, i) {
+    this.index = i;
     this.selectPicture = picture;
     this.lightBox = true;
   }

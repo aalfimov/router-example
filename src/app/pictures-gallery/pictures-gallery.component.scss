@@ -9,13 +9,13 @@ img {
   display: inline-flex;
 
   padding: 5px;
-  filter: grayscale(100%);
+  filter: grayScale(100%);
   transition: 0.1s linear;
 }
 
 .img-container:hover {
   transform: scale(1.03);
-  filter: grayscale(0);
+  filter: grayScale(0);
 }
 
 .small-picture {
@@ -32,7 +32,6 @@ img {
   min-width: 100vw;
   min-height: 100vh;
   color: white;
-  // display: flex;
   align-items: center;
   justify-content: center;
   //:active, :focus {
@@ -42,16 +41,19 @@ img {
   //  border: 0;
   //}
 }
-.img-light-box:target{
+
+.img-light-box:target {
   display: flex;
 }
-.img-light-box__content{
+
+.img-light-box__content {
   width: 75%;
   background: black;
   padding: 1em;
   position: relative;
 }
-.close{
+
+.css-button {
   position: absolute;
   right: -1em;
   top: -1em;
@@ -65,7 +67,8 @@ img {
   justify-content: center;
   text-decoration: none;
 }
-.close::after{
+
+.css-button::after {
   content: 'x';
   color: white;
 }
