@@ -1,8 +1,19 @@
 <div class="img-light-box">
-  <div class="img-light-box__content" appKeyboardListener>
-    <div class="css-button close" (click)="closeLightBox()">x</div>
-    <img src="{{selectPicture}}" alt="big-picture">
-    <div class="css-button left-arrow" (click)="leftPicture()"><</div>
-    <div class="css-button right-arrow" (click)="rightPicture()">></div>
+  <div class="img-light-box__content"
+       appKeyboardListener>
+    <div class="css-button close"
+         (click)="closeLightBox()">
+      x
+    </div>
+    <div class="css-button left-arrow"
+         (click)="leftPicture()">
+      <
+    </div>
+    <div class="css-button right-arrow"
+         (click)="rightPicture()">
+      >
+    </div>
+    <img src="{{selectPicture}}"
+         alt="big-picture">
   </div>
 </div>

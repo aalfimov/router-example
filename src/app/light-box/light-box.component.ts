@@ -1,4 +1,4 @@
-import {Component, Directive, ElementRef, HostListener, Input, OnChanges, OnInit} from '@angular/core';
+import {Component, Input, OnChanges} from '@angular/core';
 import {PicturesGalleryComponent} from '../pictures-gallery/pictures-gallery.component';
 import {PicturesService} from '../pictures.service';
 
@@ -36,24 +36,4 @@ export class LightBoxComponent implements OnChanges {
     }
   }
 }
-@Directive({selector: '[appKeyboardListener]'})
-export class KeyboardListenerDirective {
 
-  constructor(private lightBoxComponent: LightBoxComponent) {
-  }
-
-  @HostListener('window:keyup', ['$event'])
-  keyEventArrow(event: KeyboardEvent) {
-    switch (event.code) {
-      case 'Escape':
-        this.lightBoxComponent.closeLightBox();
-        break;
-      case 'ArrowLeft':
-        this.lightBoxComponent.leftPicture();
-        break;
-      case 'ArrowRight':
-        this.lightBoxComponent.rightPicture();
-        break;
-    }
-  }
-}

@@ -34,12 +34,6 @@ img {
   color: white;
   align-items: center;
   justify-content: center;
-  //:active, :focus {
-  //  outline: none;
-  //}
-  //::-moz-focus-inner {
-  //  border: 0;
-  //}
 }
 
 .img-light-box:target {
@@ -69,6 +63,5 @@ img {
 }
 
 .css-button::after {
-  content: 'x';
   color: white;
 }
