@@ -1,6 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {PicturesService} from '../pictures.service';
-import {ActivatedRoute} from '@angular/router';
+import {Component, Input, OnInit} from '@angular/core';
+import {PicturesGalleryComponent} from '../pictures-gallery/pictures-gallery.component';
 
 @Component({
   selector: 'app-light-box',
@@ -8,14 +7,15 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./light-box.component.scss']
 })
 export class LightBoxComponent implements OnInit {
+  @Input() selectPicture: string;
 
-  image: string;
-
-  constructor(private picturesService: PicturesService,
-              private route: ActivatedRoute) {
+  constructor(private picturesGalleryComponent: PicturesGalleryComponent) {
   }
 
   ngOnInit() {
-    this.image = this.route.snapshot.params.url;
+  }
+
+  closeLightBox() {
+    this.picturesGalleryComponent.lightBox = false;
   }
 }

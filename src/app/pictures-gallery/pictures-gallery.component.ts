@@ -7,6 +7,8 @@ import {PicturesService} from '../pictures.service';
   styleUrls: ['./pictures-gallery.component.scss']
 })
 export class PicturesGalleryComponent implements OnInit {
+  lightBox = false;
+  selectPicture: any;
 
   constructor(private picturesService: PicturesService) {
   }
@@ -21,4 +23,8 @@ export class PicturesGalleryComponent implements OnInit {
   //   // console.log('picture was clicked' + picture);
   //   return `<img src="{{picture}}" alt="picture" class="lightbox">`;
   // }
+  showLightBox(picture) {
+    this.selectPicture = picture;
+    this.lightBox = true;
+  }
 }

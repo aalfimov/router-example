@@ -1,10 +1,17 @@
 <div *ngFor="let picture of this.picturesService.picturesArray" class="img-container">
-  <img [routerLink]="['/image', picture]"
+  <img (click)="showLightBox(picture)"
        src="{{picture}}"
        alt="small picture"
        class="small-picture">
 </div>
-<!--<div *ngFor="let bigPicture of this.picturesService.picturesArray; let i = index" class="img-light-box" >-->
+<div class="light-box-opener" *ngIf="lightBox">
+  <app-light-box [selectPicture]="selectPicture"></app-light-box>
+</div>
+
+
+<!-- [routerLink]="['/image', picture]"
+
+<div *ngFor="let bigPicture of this.picturesService.picturesArray; let i = index" class="img-light-box" >-->
 <!--  <div class="img-light-box__content">-->
 <!--    <div class="close"></div>-->
 <!--    <img src="{{bigPicture}}" alt="big-picture">-->

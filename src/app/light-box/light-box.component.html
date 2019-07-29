@@ -1,10 +1,20 @@
 <!--<div class="img-container">-->
 <!--    <div [routerLink]="['/gallery']" [ngStyle]="{'background-image':'url('+ image +')'}" class="img-item"></div>-->
+<!--  <img src="{{image}}" alt="big-picture">-->
 <!--</div>-->
-<div *ngFor="let bigPicture of this.picturesService.picturesArray; let i = index" class="img-light-box" >
+
+<div class="img-light-box">
   <div class="img-light-box__content">
-    <div class="close" [routerLink]="['/gallery']"></div>
-    <img src="{{bigPicture}}" alt="big-picture">
-    <p>{{i}}</p>
+    <div class="close" (click)="closeLightBox()"></div>
+<!--    <div class="close" (click)="closeLightBox()"></div>-->
+    <img src="{{selectPicture}}" alt="big-picture">
   </div>
 </div>
+
+<!--<div *ngFor="let bigPicture of this.picturesService.picturesArray; let i = index" class="img-light-box" >-->
+<!--  <div class="img-light-box__content">-->
+<!--    <div class="close" [routerLink]="['/gallery']"></div>-->
+<!--    <img src="{{bigPicture}}" alt="big-picture">-->
+<!--    <p>{{i}}</p>-->
+<!--  </div>-->
+<!--</div>-->
