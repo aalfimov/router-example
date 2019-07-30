@@ -7,7 +7,6 @@ import {PicturesService} from '../pictures.service';
   styleUrls: ['./pictures-gallery.component.scss']
 })
 export class PicturesGalleryComponent {
-  lightBox = false;
   selectPicture: string;
   index: number;
 
@@ -17,6 +16,6 @@ export class PicturesGalleryComponent {
   showLightBox(picture, i) {
     this.index = i;
     this.selectPicture = picture;
-    this.lightBox = true;
+    this.picturesService.lightBox = true;
   }
 }

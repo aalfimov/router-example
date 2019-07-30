@@ -6,7 +6,7 @@ import {AppComponent} from './app.component';
 import {PicturesGalleryComponent} from './pictures-gallery/pictures-gallery.component';
 import {UploadPictureComponent} from './upload-picture/upload-picture.component';
 import {LightBoxComponent} from './light-box/light-box.component';
-import {KeyboardListenerDirective} from './keyboard-listener.directive';
+import {KeyboardListenerDirective} from './light-box/keyboard-listener.directive';
 
 @NgModule({
   declarations: [

@@ -11,7 +11,7 @@ export class LightBoxComponent implements OnChanges {
   selectPicture: string;
   @Input() index: number;
 
-  constructor(private picturesGalleryComponent: PicturesGalleryComponent, private picturesService: PicturesService) {
+  constructor(private picturesService: PicturesService) {
   }
 
   ngOnChanges() {
@@ -19,7 +19,7 @@ export class LightBoxComponent implements OnChanges {
   }
 
   closeLightBox() {
-    this.picturesGalleryComponent.lightBox = false;
+    this.picturesService.lightBox = false;
   }
 
   leftPicture() {

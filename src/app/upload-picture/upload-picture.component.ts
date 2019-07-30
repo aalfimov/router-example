@@ -7,25 +7,29 @@ import {PicturesService} from '../pictures.service';
   styleUrls: ['./upload-picture.component.scss']
 })
 export class UploadPictureComponent implements OnInit {
+  private base64textString: string;
 
   constructor(private picturesService: PicturesService) {
   }
-  changeListener($event): void {
-    this.readThis($event.target);
+
+  handleFileSelect(evt) {
+    const files = evt.target.files;
+    const file = files[0];
+
+    if (files && file) {
+      const reader = new FileReader();
+
+      reader.onload = this.handleReaderLoaded.bind(this);
+
+      reader.readAsBinaryString(file);
+    }
   }
-  // https://developer.mozilla.org/ru/docs/Web/API/FileReader
-  // https://ru.wikipedia.org/wiki/Base64
-  // ToDo download pictures and conver them to base64
 
-  readThis(inputValue: any): void {
-    const file: File = inputValue.files[0];
-    const myReader: FileReader = new FileReader();
-    const fileType = inputValue.parentElement.id;
-    myReader.onloadend = (e) => {
-      console.log(myReader.result);
-    };
-
-    myReader.readAsText(file);
+  handleReaderLoaded(readerEvt) {
+    console.log(readerEvt.target);
+    const binaryString = readerEvt.target.result;
+    this.base64textString = btoa(binaryString);
+    this.add('data:image/jpg;base64,' + this.base64textString);
   }
 
   ngOnInit() {

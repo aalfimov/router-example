@@ -1,5 +1,5 @@
 import {Directive, HostListener} from '@angular/core';
-import {LightBoxComponent} from './light-box/light-box.component';
+import {LightBoxComponent} from './light-box.component';
 
 @Directive({
   selector: '[appKeyboardListener]'
