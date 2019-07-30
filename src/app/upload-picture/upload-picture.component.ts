@@ -7,25 +7,43 @@ import {PicturesService} from '../pictures.service';
   styleUrls: ['./upload-picture.component.scss']
 })
 export class UploadPictureComponent {
-  private base64textString: string;
 
   constructor(private picturesService: PicturesService) {
   }
+  public imagePath;
+  imgURL: any;
+  public message: string;
+  preview(files) {
+    if (files.length === 0) {
+      return;
+    }
 
-  handleFileSelect(evt) {
-    const file = evt.target.files[0];
+    const mimeType = files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      this.message = 'Only images are supported.';
+      return;
+    }
+
+    const reader = new FileReader();
+    this.imagePath = files;
+    reader.readAsDataURL(files[0]);
+    reader.onload = () => {
+      this.imgURL = reader.result;
+    };
+  }
+
+  handleFileSelect(event) {
+    const file = event.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = this.handleReaderLoaded.bind(this);
-      reader.readAsBinaryString(file);
-      console.log();
+      reader.readAsDataURL(file);
     }
   }
 
-  handleReaderLoaded(readerEvt) {
-    const binaryString = readerEvt.target.result;
-    this.base64textString = btoa(binaryString);
-    this.add('data:image/jpg;base64,' + this.base64textString);
+  handleReaderLoaded(readerEvent) {
+    const base64textString = readerEvent.target.result;
+    this.add(base64textString);
   }
 
   add(value: string) {
