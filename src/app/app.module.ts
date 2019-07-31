@@ -7,6 +7,7 @@ import {PicturesGalleryComponent} from './pictures-gallery/pictures-gallery.comp
 import {UploadPictureComponent} from './upload-picture/upload-picture.component';
 import {LightBoxComponent} from './light-box/light-box.component';
 import {KeyboardListenerDirective} from './light-box/keyboard-listener.directive';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {KeyboardListenerDirective} from './light-box/keyboard-listener.directive
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,15 +1,22 @@
-  <label>
-    Enter an URL:
-    <input type="url"
-           name="url"
-           id="url"
-           placeholder="example.com/1.jpg"
-           #urlPicture>
-  </label>
-  <br>
-<!--  <input type="file" id="filePicker" (change)="handleFileSelect($event)">-->
-  <button class="myButton" (click)="add(urlPicture.value)">add</button>
-  <span style="color:red;" *ngIf="message">{{message}}</span>
-  <input #file type="file" accept='image/*' (change)="preview(file.files)" />
-  <img [src]="imgURL" height="200" *ngIf="imgURL" alt="img">
+    <label>
+      Enter image URL:
+      <input type="url" [formControl]="name" (change)="setPreviewUrl(name.value)">
+    </label>
+    <br>
+    <label>
+      Upload image:
+      <input type="file" [formControl]="name" (change)="handleFileSelect($event)">
+    </label>
+    <br>
+    <img src="{{imgURL}}" height="250" *ngIf="imgURL" alt="img">
+    <br>
+    <button type="submit" class="myButton" (click)="add(imgURL)">add</button>
+
+<!--      <input type="url"-->
+<!--             name="url"-->
+<!--             id="url"-->
+<!--             placeholder="example.com/1.jpg"-->
+<!--             #urlPicture>-->
+<!--    <button type="submit" class="myButton" (click)="add(#urlPicture.value)">add</button>-->
+
 
