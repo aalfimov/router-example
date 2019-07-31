@@ -1,19 +1,35 @@
+<form [formGroup]="imageForm" (submit)="checkForm(imageForm)">
     <label>
       Enter image URL:
-      <input type="url" [formControl]="name" (change)="setPreviewUrl(name.value)">
+      <input type="url"
+             formControlName="url"
+             (change)="setPreviewUrl(url.value)">
     </label>
     <br>
     <label>
       Upload image:
-      <input type="file" [formControl]="name" (change)="handleFileSelect($event)">
+      <input type="file"
+             formControlName="url"
+             (change)="handleFileSelect($event)">
     </label>
     <br>
-    <img src="{{imgURL}}" height="250" *ngIf="imgURL" alt="img">
+    <img src="{{imgURL}}"
+         height="250"
+         *ngIf="imgURL"
+         alt="img">
     <br>
-    <button type="submit" class="myButton" (click)="add(imgURL)">add</button>
+    <button type="submit"
+            class="myButton">
+      add
+    </button>
+</form>
 
+<!-- add(imgURL)
+[disabled]="!imageForm.valid
+             (change)="setPreviewUrl(imageForm.value)"-->
+<!--             (change)="handleFileSelect($event)"-->
 <!--      <input type="url"-->
-<!--             name="url"-->
+<!--             url="url"-->
 <!--             id="url"-->
 <!--             placeholder="example.com/1.jpg"-->
 <!--             #urlPicture>-->

@@ -1,22 +1,21 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PicturesService} from '../pictures.service';
-import {FormControl} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-upload-picture',
   templateUrl: './upload-picture.component.html',
   styleUrls: ['./upload-picture.component.scss']
 })
-export class UploadPictureComponent {
+export class UploadPictureComponent implements OnInit{
 
-  constructor(private picturesService: PicturesService) {
+  constructor(private picturesService: PicturesService, private fb: FormBuilder) {
   }
-  name = new FormControl('');
-  imgURL: any;
+  url = new FormControl('', Validators.required);
+  imgURL: string;
+  public imageForm: FormGroup;
 
   // preview(files, file) {
-  //   console.log(file);
-  //   console.log(files);
   //   if (files.length === 0) {
   //     return;
   //   }
@@ -32,7 +31,18 @@ export class UploadPictureComponent {
   //     this.imgURL = reader.result;
   //   };
   // }
-
+  ngOnInit(): void {
+    this.initForm();
+  }
+  private initForm() {
+    this.imageForm = this.fb.group({
+      url: ['', Validators.required],
+      file: ['', Validators.required]
+    });
+  }
+  setPreviewUrl(value: string) {
+    this.imgURL = value;
+  }
   handleFileSelect(event) {
     this.imgURL = '';
     const file = event.target.files[0];
@@ -48,12 +58,14 @@ export class UploadPictureComponent {
   }
 
   add(value: string) {
-    if (value) {
-      this.picturesService.add(value);
-    }
+
+    this.picturesService.add(value);
+    // if (value) {
+    //   this.picturesService.add(value);
+    // }
   }
 
-  setPreviewUrl(value: string) {
-    this.imgURL = value;
+  checkForm(imageForm: FormGroup) {
+    console.log(imageForm);
   }
 }
