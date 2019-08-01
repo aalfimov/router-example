@@ -1,19 +1,20 @@
 import {Component, OnInit} from '@angular/core';
 import {PicturesService} from '../pictures.service';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, ValidationErrors, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-upload-picture',
   templateUrl: './upload-picture.component.html',
   styleUrls: ['./upload-picture.component.scss']
 })
-export class UploadPictureComponent implements OnInit{
+export class UploadPictureComponent implements OnInit {
 
   constructor(private picturesService: PicturesService, private fb: FormBuilder) {
   }
-  url = new FormControl('', Validators.required);
   imgURL: string;
   public imageForm: FormGroup;
+  buttonCheckValue = false;
+
 
   // preview(files, file) {
   //   if (files.length === 0) {
@@ -33,13 +34,21 @@ export class UploadPictureComponent implements OnInit{
   // }
   ngOnInit(): void {
     this.initForm();
+    console.log(this.imageForm);
   }
   private initForm() {
     this.imageForm = this.fb.group({
-      url: ['', Validators.required],
-      file: ['', Validators.required]
-    });
+      url: [''],
+      file: ['']
+    }, {validators: this.myCustomValidator});
   }
+  private myCustomValidator(control: FormGroup): ValidationErrors | null {
+    const url = control.get('url');
+    const file = control.get('file');
+    return (url.value.length || file.value.length) ? null :  {required : true};
+  }
+
+  // , this.customValidator.bind(this)
   setPreviewUrl(value: string) {
     this.imgURL = value;
   }
@@ -52,20 +61,22 @@ export class UploadPictureComponent implements OnInit{
       reader.readAsDataURL(file);
     }
   }
-
+  // customValidator(control: FormControl): {[s: string]: boolean} {
+  //     if (this.imageForm.value.url.length > 0 || this.imageForm.value.file.length > 0) {
+  //         return {valid: true};
+  //     }
+  //     return null;
+  // }
   handleReaderLoaded(readerEvent) {
     this.imgURL = readerEvent.target.result;
   }
 
-  add(value: string) {
-
-    this.picturesService.add(value);
-    // if (value) {
-    //   this.picturesService.add(value);
-    // }
+  add() {
+    this.picturesService.add(this.imgURL);
   }
 
-  checkForm(imageForm: FormGroup) {
-    console.log(imageForm);
-  }
+  // checkForm(imageForm: FormGroup) {
+  //   // this.buttonCheckValue = this.imageForm.value.url.length > 0 || this.imageForm.value.file.length > 0;
+  //   this.buttonCheckValue = this.imageForm.value.url.length > 0 || this.imageForm.value.file.length > 0;
+  // }
 }
