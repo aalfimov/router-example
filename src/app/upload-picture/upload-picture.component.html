@@ -1,4 +1,4 @@
-<form [formGroup]="imageForm" (submit)="add($event)">
+<form [formGroup]="imageForm" (submit)="add()">
   <label>
     Enter image URL:
     <input type="url"
@@ -18,8 +18,8 @@
     add
   </button>
 </form>
-<img *ngIf="imgURL"
-     src="{{imgURL}}"
+<img *ngIf="imageForm.value.url && imageForm.valid || imageForm.value.file && imageForm.valid"
+     src="{{imageForm.value.url|| imgURL}}"
      height="250"
      alt="img">
 <br>
