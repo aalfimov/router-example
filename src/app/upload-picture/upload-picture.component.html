@@ -18,11 +18,16 @@
     add
   </button>
 </form>
-<img *ngIf="imageForm.value.url && imageForm.valid || imageForm.value.file && imageForm.valid"
-     src="{{imageForm.value.url|| imgURL}}"
-     height="250"
-     alt="img">
-<br>
+<!--<img *ngIf="imageForm.valid"-->
+<!--     src="{{imageForm.value.url}}"-->
+<!--     height="250"-->
+<!--     alt="img">-->
+<!--<br>-->
+<!--<img *ngIf="imageForm.controls.value"-->
+<!--     src="{{imgURL}}"-->
+<!--     height="250"-->
+<!--     alt="img">-->
+<!--<br>-->
 <p>Url: {{imageForm.value.url}}</p>
 <p>File name: {{imageForm.value.file}}</p>
 
