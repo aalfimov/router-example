@@ -2,7 +2,8 @@
   <label>
     Enter image URL:
     <input type="url"
-           formControlName="url">
+           formControlName="url"
+           (change)="clearFileInput()">
   </label>
   <br>
   <label>
@@ -18,21 +19,12 @@
     add
   </button>
 </form>
-<!--<img *ngIf="imageForm.valid"-->
-<!--     src="{{imageForm.value.url}}"-->
-<!--     height="250"-->
-<!--     alt="img">-->
-<!--<br>-->
-<!--<img *ngIf="imageForm.controls.value"-->
-<!--     src="{{imgURL}}"-->
-<!--     height="250"-->
-<!--     alt="img">-->
-<!--<br>-->
-<p>Url: {{imageForm.value.url}}</p>
-<p>File name: {{imageForm.value.file}}</p>
-
-<!--
-           #url
-           (change)="setPreviewUrl(url.value)"
-           (change)="handleFileSelect($event)"
-           -->
+<img *ngIf="imageForm.value.url"
+     src="{{imageForm.value.url}}"
+     height="250"
+     alt="img">
+<br>
+<img *ngIf="imgURL"
+     src="{{imgURL}}"
+     height="250"
+     alt="img">

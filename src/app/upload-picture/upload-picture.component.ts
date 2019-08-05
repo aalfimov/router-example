@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PicturesService} from '../pictures.service';
-import {FormBuilder, FormControl, FormGroup, ValidationErrors} from '@angular/forms';
+import {FormBuilder, FormGroup, ValidationErrors} from '@angular/forms';
 
 @Component({
   selector: 'app-upload-picture',
@@ -21,34 +21,32 @@ export class UploadPictureComponent implements OnInit {
 
   private initForm() {
     this.imageForm = this.fb.group({
-      url: new FormControl(null, this.urlCustomValidator),
-      // , {validators: this.urlCustomValidator}
+      url: [''],
       file: ['']
-      // , {validators: this.fileCustomValidator}
     }, {validators: this.myCustomValidator});
   }
 
-  urlCustomValidator(control: FormGroup): ValidationErrors | null {
-    const url = control.value;
-    console.log(url.match(/(http(s?):)([/|.|\w|\s|-])*\.(?:jp(e?)g|gif|png)/) != null);
-    // const url = control.get('url').value.match(/(http(s?):)([/|.|\w|\s|-])*\.(?:jp(e?)g|gif|png)/) != null;
-    return (url) ? null : {required: true};
-  }
-
-  fileCustomValidator(control: FormGroup): ValidationErrors | null {
-    const file = control.get('file').value.match(/(?:jp(e?)g|gif|png)/) != null;
-    return (file) ? null : {required: true};
-  }
+  // urlCustomValidator(control: FormGroup): ValidationErrors | null {
+  //   const url = control.value;
+  //   console.log(url.match(/(http(s?):)([/|.|\w|\s|-])*\.(?:jp(e?)g|gif|png)/) != null);
+  //   // const url = control.get('url').value.match(/(http(s?):)([/|.|\w|\s|-])*\.(?:jp(e?)g|gif|png)/) != null;
+  //   return (url) ? null : {required: true};
+  // }
+  //
+  // fileCustomValidator(control: FormGroup): ValidationErrors | null {
+  //   const file = control.get('file').value.match(/(?:jp(e?)g|gif|png)/) != null;
+  //   return (file) ? null : {required: true};
+  // }
 
   myCustomValidator(control: FormGroup): ValidationErrors | null {
-    const url = control.get('url');
-    const file = control.get('file');
-    // const url = control.value.match(/(http(s?):)([/|.|\w|\s|-])*\.(?:jp(e?)g|gif|png)/) != null;
-    // const file = control.get('file').value.match(/(?:jp(e?)g|gif|png)/) != null;
+    const url = control.value.url.match(/(http(s?):)([/|.|\w|\s|-])*\.(?:jp(e?)g|gif|png)/) != null;
+    const file = control.value.file.match(/(?:jp(e?)g|gif|png)/) != null;
+    console.log(file);
     return (url || file) ? null : {required: true};
   }
 
   handleFileSelect(event) {
+    this.imageForm.value.url = '';
     this.imgURL = '';
     const file = event.target.files[0];
     if (file.type.match(/image\/*/) != null) {
@@ -63,12 +61,16 @@ export class UploadPictureComponent implements OnInit {
   }
 
   add() {
-    console.log(this.imageForm.controls);
-    if (this.imageForm.value.url != null) {
+    if (this.imageForm.value.url) {
       this.picturesService.add(this.imageForm.value.url);
     }
-    if (this.imageForm.value.file != null) {
+    if (this.imageForm.value.file) {
       this.picturesService.add(this.imgURL);
     }
+  }
+
+  clearFileInput() {
+    this.imageForm.value.file = '';
+    this.imgURL = '';
   }
 }
