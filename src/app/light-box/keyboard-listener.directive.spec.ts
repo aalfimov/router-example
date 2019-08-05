@@ -1,4 +1,4 @@
-import { KeyboardListenerDirective } from './keyboard-listener.directive';
+import {KeyboardListenerDirective} from './keyboard-listener.directive';
 
 describe('KeyboardListenerDirective', () => {
   it('should create an instance', () => {
