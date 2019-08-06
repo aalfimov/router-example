@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PicturesService} from '../pictures.service';
-import {FormBuilder, FormGroup, ValidationErrors, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-upload-picture',
@@ -25,17 +25,17 @@ export class UploadPictureComponent implements OnInit {
     }, {validators: this.myCheckValidator});
   }
 
-  urlValidator(control: FormGroup): ValidationErrors | null {
+  urlValidator(control: FormGroup) {
     const url = control.value.match(/(http(s?):)([/|.|\w|\s|-])*\.(?:jp(e?)g|gif|png)/) != null;
     return (url) ? null : {required: true};
   }
 
-  fileValidator(control: FormGroup): ValidationErrors | null {
+  fileValidator(control: FormGroup) {
     const file = control.value.match(/(?:jp(e?)g|gif|png)/) != null;
-    return (file) ? null : {required: true};
+    return (file) ? null : {required: true} ;
   }
 
-  myCheckValidator(control: FormGroup): ValidationErrors | null {
+  myCheckValidator(control: FormGroup) {
     const url = control.value.url != null;
     const file = control.value.file != null;
     return (url || file) ? null : {required: true};
@@ -58,5 +58,13 @@ export class UploadPictureComponent implements OnInit {
     if (this.imageForm.controls.url.valid) {
       this.imgURL = this.imageForm.value.url;
     }
+  }
+
+  add() {
+    this.picturesService.add(this.imgURL);
+  }
+
+  clearInput(urlInput: HTMLInputElement) {
+    urlInput.value = '';
   }
 }

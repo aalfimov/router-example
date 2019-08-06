@@ -1,11 +1,11 @@
-<form [formGroup]="imageForm" (submit)="picturesService.add(imgURL)">
+<form [formGroup]="imageForm" (submit)="add()">
   <label>
     Enter image URL:
     <input type="url"
            formControlName="url"
            #urlInput
            (change)="clearFileInput()"
-           (click) = "fileInput.value = ''">
+           (click) = "clearInput(fileInput)">
   </label>
   <br>
   <label>
@@ -14,7 +14,7 @@
            formControlName="file"
            #fileInput
            (change)="handleFileSelect($event)"
-           (click) = "urlInput.value = ''">
+           (click) = "clearInput(urlInput)">
   </label>
   <br>
   <button type="submit"
@@ -22,6 +22,7 @@
           [disabled]="!imgURL && !imageForm.valid">
     add
   </button>
+  <br>
 </form>
 <img *ngIf="imgURL && imageForm.controls.url.valid || imageForm.controls.file.valid"
      src="{{imgURL}}"

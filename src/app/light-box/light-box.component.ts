@@ -1,5 +1,4 @@
 import {Component, Input, OnChanges} from '@angular/core';
-import {PicturesGalleryComponent} from '../pictures-gallery/pictures-gallery.component';
 import {PicturesService} from '../pictures.service';
 
 @Component({
