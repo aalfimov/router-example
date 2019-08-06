@@ -3,27 +3,27 @@
     Enter image URL:
     <input type="url"
            formControlName="url"
-           (change)="clearFileInput()">
+           #urlInput
+           (change)="clearFileInput()"
+           (click) = "fileInput.value = ''">
   </label>
   <br>
   <label>
     Upload image:
     <input type="file"
            formControlName="file"
-           (change)="handleFileSelect($event)">
+           #fileInput
+           (change)="handleFileSelect($event)"
+           (click) = "urlInput.value = ''">
   </label>
   <br>
   <button type="submit"
           class="myButton"
-          [disabled]="!imageForm.valid">
+          [disabled]="!imgURL && !imageForm.valid">
     add
   </button>
 </form>
-<!--<img *ngIf="imageForm.controls.url.valid"-->
-<!--     src="{{imageForm.value.url}}"-->
-<!--     height="250"-->
-<!--     alt="img">-->
-<img *ngIf="imgURL && imageForm.controls.url.valid"
+<img *ngIf="imgURL && imageForm.controls.url.valid || imageForm.controls.file.valid"
      src="{{imgURL}}"
      height="250"
      alt="img">
