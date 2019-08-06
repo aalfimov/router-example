@@ -1,10 +1,10 @@
-<div *ngFor="let picture of this.picturesService.picturesArray; let i=index"
+<div *ngFor="let picture of this.picturesService.getPictureArray(); let i=index"
      class="img-container">
   <img (click)="showLightBox(picture, i)"
        src="{{picture}}"
        alt="small picture"
        class="small-picture">
 </div>
-<div class="light-box-opener" *ngIf="picturesService.lightBox">
+<div class="light-box-opener" *ngIf="picturesService.getLightBoxState()">
   <app-light-box [index]="index"></app-light-box>
 </div>

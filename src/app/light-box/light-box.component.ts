@@ -8,31 +8,31 @@ import {PicturesService} from '../pictures.service';
   styleUrls: ['./light-box.component.scss']
 })
 export class LightBoxComponent implements OnChanges {
-  selectPicture: string;
+  private selectPicture: string;
   @Input() index: number;
 
   constructor(private picturesService: PicturesService) {
   }
 
   ngOnChanges() {
-    this.selectPicture = this.picturesService.picturesArray[this.index];
+    this.selectPicture = this.picturesService.getPictureByIndex(this.index);
   }
 
   closeLightBox() {
-    this.picturesService.lightBox = false;
+    this.picturesService.changeLightBoxState(false);
   }
 
   leftPicture() {
     if (this.index > 0) {
       this.index = this.index - 1;
-      this.selectPicture = this.picturesService.picturesArray[this.index];
+      this.selectPicture = this.picturesService.getPictureByIndex(this.index);
     }
   }
 
   rightPicture() {
-    if (this.index < this.picturesService.picturesArray.length - 1) {
+    if (this.index < this.picturesService.getPictureArray().length - 1) {
       this.index = this.index + 1;
-      this.selectPicture = this.picturesService.picturesArray[this.index];
+      this.selectPicture = this.picturesService.getPictureByIndex(this.index);
     }
   }
 }

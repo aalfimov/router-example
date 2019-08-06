@@ -12,8 +12,8 @@ export class UploadPictureComponent implements OnInit {
   constructor(private picturesService: PicturesService, private fb: FormBuilder) {
   }
 
-  imgURL: string;
-  public imageForm: FormGroup;
+  private imgURL: string;
+  private imageForm: FormGroup;
 
   ngOnInit(): void {
     this.initForm();
@@ -27,11 +27,12 @@ export class UploadPictureComponent implements OnInit {
   }
 
   urlCustomValidator(control: FormGroup): ValidationErrors | null {
-    const url = control.value.url.match(/(http(s?):)([/|.|\w|\s|-])*\.(?:jp(e?)g|gif|png)/) != null;
+    const url = control.value.match(/(http(s?):)([/|.|\w|\s|-])*\.(?:jp(e?)g|gif|png)/) != null;
     return (url) ? null : {required: true};
   }
   //
   // fileCustomValidator(control: FormGroup): ValidationErrors | null {
+  //     console.log(control.value);
   //   const file = control.get('file').value.match(/(?:jp(e?)g|gif|png)/) != null;
   //   return (file) ? null : {required: true};
   // }
@@ -70,8 +71,8 @@ export class UploadPictureComponent implements OnInit {
   clearFileInput() {
     this.imgURL = '';
     this.imageForm.value.file = '';
-    // if (this.imageForm.valid && !this.imageForm.value.file) {
-    //   this.imgURL = this.imageForm.value.url;
-    // }
+    if (this.imageForm.valid && this.imageForm.controls.url.valid) {
+      this.imgURL = this.imageForm.value.url;
+    }
   }
 }
