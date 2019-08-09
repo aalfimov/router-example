@@ -8,7 +8,7 @@ const routes: Routes = [
   {path: 'gallery', component: PicturesGalleryComponent},
   {path: 'image/:url', component: LightBoxComponent},
   {path: 'upload', component: UploadPictureComponent},
-  {path: '', redirectTo: '/gallery', pathMatch: 'full'}
+  // {path: '', redirectTo: '/gallery', pathMatch: 'full'}
 ];
 
 @NgModule({
