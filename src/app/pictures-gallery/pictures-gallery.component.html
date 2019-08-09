@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!--<div *ngFor="let picture of this.picturesService.picturesArray" class="img-container">-->
 <!--  <img-->
 <!--       src="{{picture}}"-->
@@ -76,4 +77,15 @@ portfolio-item-2
     <h3 class="portfolio__title">This is the title</h3>
     <p class="portfolio__body">This would be a description of the portfolio item</p>
   </div>
+=======
+<div *ngFor="let picture of this.picturesService.getPictureArray(); let i=index"
+     class="img-container">
+  <img (click)="showLightBox(picture, i)"
+       src="{{picture}}"
+       alt="small picture"
+       class="small-picture">
+</div>
+<div class="light-box-opener" *ngIf="picturesService.getLightBoxState()">
+  <app-light-box [index]="index"></app-light-box>
+>>>>>>> 23b1ec94a241a1fbf7d4c55ee19b5103a19fe06c
 </div>

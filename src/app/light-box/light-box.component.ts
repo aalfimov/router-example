@@ -1,21 +1,38 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnChanges} from '@angular/core';
 import {PicturesService} from '../pictures.service';
-import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-light-box',
   templateUrl: './light-box.component.html',
   styleUrls: ['./light-box.component.scss']
 })
-export class LightBoxComponent implements OnInit {
+export class LightBoxComponent implements OnChanges {
+  private selectPicture: string;
+  @Input() index: number;
 
-  image: string;
-
-  constructor(private picturesService: PicturesService,
-              private route: ActivatedRoute) {
+  constructor(private picturesService: PicturesService) {
   }
 
-  ngOnInit() {
-    this.image = this.route.snapshot.params.url;
+  ngOnChanges() {
+    this.selectPicture = this.picturesService.getPictureByIndex(this.index);
+  }
+
+  closeLightBox() {
+    this.picturesService.changeLightBoxState(false);
+  }
+
+  leftPicture() {
+    if (this.index > 0) {
+      this.index = this.index - 1;
+      this.selectPicture = this.picturesService.getPictureByIndex(this.index);
+    }
+  }
+
+  rightPicture() {
+    if (this.index < this.picturesService.getPictureArray().length - 1) {
+      this.index = this.index + 1;
+      this.selectPicture = this.picturesService.getPictureByIndex(this.index);
+    }
   }
 }
+
